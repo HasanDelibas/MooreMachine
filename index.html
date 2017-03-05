@@ -1,0 +1,207 @@
+<head>
+    <title> Automata Theory - Moore Machine</title>
+    <meta content="">
+
+
+    <link rel="stylesheet" type="text/css" href="css.css">
+
+    <link href="https://fonts.googleapis.com/css?family=Titillium+Web&amp;subset=latin-ext" rel="stylesheet">
+
+    <script src="jquery.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+</head>
+
+
+
+
+
+<script>
+    $(document).ready(function(){
+        $('#uyarla').click(function () {  
+
+            var qstr = $(".q").val();	var q = qstr.split(",");
+            var estr = $(".e").val();	var e = estr.split(",");
+            var rstr = $(".r").val();	var r = rstr.split(",");
+
+            var es = e.length;
+
+            createTable(es,e,q,r);
+
+        }); 
+
+        function createTable(es,e,q,r){
+            var t= $("table.org");
+            var str;
+            t.empty();
+            str = "<tr><th colspan=" + (es+1) + "> Transition Table</th><th> output Table </th></tr><tr>  <td> Old State </td>";
+            for(i=0;i<e.length;i++){
+                str = str+ "<td>" + e[i] + "</td>";
+            }
+            str = str +"<td> Character printed</td>";
+            //       t.append(str);
+
+            for(a = 0 ; a < q.length ; a++){
+                // 	  alert(a +" " + q.length );
+
+                str = str + "<tr><td>"+ q[a] + "</td>";
+                for(j = 0 ; j<e.length;j++){
+                    str= str+ "<td>" + createSelect(q,"way",e[j],q[a])+"</td>";
+                }
+                str= str+ "<td>" + createSelect(r,"out","-1",q[a])+"</td>";
+                str=str+ "</tr>";
+
+
+
+            }
+
+            t.append(str);
+
+        }
+
+
+        function createSelect(q,clas,e,sq){
+            var str="<select class="+clas+" data-e="+e +" data-sq="+sq+ " >";
+            for(i=0;i<q.length;i++){
+                str = str + "<option value="+ i + ">"+q[i]+"</option>";
+            }
+            str=str+"</select>";
+            return str;
+        }
+
+
+        $('#ciktial').click(function () {  
+
+            ciktial($(".inp").val());
+        })
+
+        function ciktial(inp){
+            var qstr = $(".q").val();	var q = qstr.split(",");
+            var estr = $(".e").val();	var e = estr.split(",");
+            var rstr = $(".r").val();	var r = rstr.split(",");
+            var state=0;
+            var way = ["q0"];
+            var o =  $("select.out[data-sq="+q[state]+"]").val();   
+            var out = [o];
+            for(i=0;i<inp.length;i++){
+                var nstate =  $("select.way[data-sq="+q[state]+"][data-e="+ inp[i] +"]").val();
+                var o =  $("select.out[data-sq="+q[nstate]+"]").val();     
+                way.push(q[nstate]);
+                out.push(o);
+                console.log(nstate);
+                state = nstate;
+            }
+
+            console.log(way);
+            console.log(out);
+
+            var c= $(".cikti");
+
+            inp = " " + inp;
+
+            var s1 = "<tr><td>Input string</td>";
+            var s2 = "<tr><td>State</td>";
+            var s3 = "<tr><td>Output</td>";
+
+            for(j = 0 ; j<inp.length;j++){
+                s1 = s1 + "<td>"+inp[j]+"</td>";
+                s2 = s2 + "<td>"+way[j]+"</td>";
+                s3 = s3 + "<td>"+out[j]+"</td>";
+            }
+            s1=s1+"</tr>";
+            s2=s2+"</tr>";
+            s3=s3+"</tr>";
+            c.empty();
+            c.append(s1);
+            c.append(s2);
+            c.append(s3);
+
+
+
+
+
+
+
+        }
+
+
+
+    })
+
+</script>
+
+<div class='well s720'>
+
+    <h3 class=tc> Automata Theory - Moore Machine </h3>
+    <p class=tc> Hasan Delibaş </p>
+<!--     <a class="tc" style="display:block;" href="odev22.html">Mealey Makinası için tıklayın</a> -->
+
+    <form method="post" class="style3 styleblue">
+        <label style="text-align:right;">Q={</label>
+        <input style="width:60%;" type="text" class="q" value="q0,q1,q2">}
+        <label style="text-align:right;">∑={</label>
+        <input style="width:60%;" type="text" value="a,b" class="e">}
+
+        <label style="text-align:right;">Γ={</label>
+        <input style="width:60%;" type="text" value="0,1" class="r">} 
+
+        <label> </label>
+        <div class="tc uyarla" id="uyarla" >Select</div>
+
+    </form>   
+
+
+
+</div>
+
+<div class='well s720 tb'>
+    <table class="tc org" style="width:100%" >
+
+    </table>
+</div>
+
+
+
+<div class='well s720 tb'>
+    <h3 class=tc> Input</h3>
+    <form method="post" class="style3 styleblue">
+
+        <label style="text-align:right;"> Input String </label>
+        <input style="width:60%;" type="text" class="inp" value="abbba">
+
+        <label style="text-align:right;"></label>
+        <div class="tc uyarla" id="ciktial">Get Print</div>
+
+    </form>   
+</div>
+
+<div class='well s720 tb'>
+    <table class="tc cikti" style="width:100%" >
+
+    </table>
+</div>
+
+
+
+<style>
+    td select{
+        width:100%;
+    }
+    .org{
+        table-layout: fixed;
+    }
+    th{
+        font-weight:bold;
+    }
+    .uyarla{
+        width:60%;    border: 2px solid rgb(57,163,255);    cursor: pointer;    background: white; padding:4px;
+        display:inline-block
+    }
+    .uyarla:hover{
+        background:#39a3ff;
+        color:white;
+    }
+
+</style>
