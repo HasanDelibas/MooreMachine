@@ -1,0 +1,257 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+} 
+/* RESET.CSS */
+
+      .well{
+	  padding:4px;
+	  border:1px solid #CCC;
+	  border-radius:4px;
+/* 	  margin:4px; */
+	  
+/* 	  box-shadow:inset 0px 1px 2px black; */
+	  background:white;
+	  margin-bottom:4px;
+	  margin-top:15px;
+      }
+      .well * {
+	  max-width:100%;
+	
+      }
+      
+      .well.s720{
+	  max-width:720px;
+	  margin:20px auto;
+      }
+
+      .well .wellheader{
+	  z-index:0;
+	  position: relative;
+	  font-size: 16;
+	  top: -12;
+	  display: inline;
+	  padding:0px 2px;
+	  margin-left: 4px;
+	  background: linear-gradient(to bottom, rgba(238,238,238,1) 0%,rgba(238,238,238,1) 50%,rgba(255,255,255,1) 50%);
+      }
+
+/* WELL.CSS */
+
+
+
+      body{
+	background:#EEE;
+      }
+     
+      .karartma{
+	display:none;
+	position: fixed;
+	left: 0px;
+	top: 0px;
+	bottom: 0px;
+	right: 0px;
+	background: rgba(0,0,0,0.5);
+	z-index:1;
+      }
+      
+      .searchdiv{
+/* 	    transition: all 0.2s; */
+	    position: fixed;
+	    left: 10%;
+	    width: 80%;
+	    top: 48px;
+	    display:none;
+      }
+      .searchdiv input, .searchdiv button{
+	  display:inline-block!important;
+	  font-size: calc(12px + 1.5vw)!important;
+      }
+      .searchdiv input{width: calc( 80% - 16px)!important;}
+      .searchdiv button{width: calc( 20% - 16px)!important;}
+      
+      
+      h3{
+	font-size:26px;
+      }
+      
+      a{
+	color:rgb(57,163,255);
+      }
+
+          
+    .fl{float:left}
+    .fr{float:right}
+    
+    .tc{text-align:center;}
+    
+    .mt10{margin-top:10px;}
+    
+    .m4{margin:4px;}
+    .p10{padding:10px; }
+    
+    
+.noselect {
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+    
+    
+    
+    
+    *{
+	transition: all 0.4s;
+	font-family: 'Titillium Web', sans-serif!important;
+      
+    }
+/* STYLE.CSS */
+
+form.style1{
+    width: calc(100% - 8px);
+    margin:8px;
+} 
+
+form.style1 label,
+form.style1 input,
+form.style1 .input,
+form.style1 select,
+form.style2 button{
+    width: calc( 50% - 8px);
+    display: inline-block;
+    margin:4px;
+    outline:none;
+    font-size:16px;
+/*     padding:20px; */
+}
+
+form.style1 label{
+    text-align:right;
+}
+/*----------------------STYLE 2 ----------------------  */
+form.style2{
+    width: calc(100% - 8px);
+    margin:8px;
+} 
+
+form.style2 label,
+form.style2 input,
+form.style2 .input,
+form.style2 select,
+form.style2 button{
+    width:calc( 100% - 16px);
+    display: block;
+    margin:4px;
+    padding:4px;
+    border:none;
+    outline:none;
+    background:white;
+    font-size:16px;
+  
+}
+
+form.style2 button{
+    cursor:pointer;
+}
+form.style2 button:hover{
+    color:white;
+}
+
+form.style2 label.error{
+  font-size: 12px;
+  color: red;
+}
+
+
+form.style3{
+    width: calc(100% - 8px);
+    margin:8px;
+} 
+
+
+form.style3 label,
+form.style3 input,
+form.style3 .input,
+form.style3 select,
+form.style3 button{
+    width: calc( 70% - 8px);
+    display: inline-block;
+    margin:4px;
+    outline:none;
+    font-size:16px;
+    background:white;
+    margin-bottom:8px;
+}
+
+form.style3 label{
+     width: calc( 30% - 8px);
+}
+
+form.style1 label{
+    text-align:right;
+}
+
+
+/* ------------- STYLEBLUE ------------  */
+form.styleblue button{
+    border:2px solid rgb(57,163,255);
+    cursor:pointer;
+    background:white;
+}
+
+form.styleblue button:hover{
+    background:rgb(57,163,255);
+}
+form.styleblue input , form.styleblue .input,form.styleblue select{
+    border:none;
+    border-bottom:2px solid rgb(57,163,255);
+}
+form.styleblue input:focus , form.styleblue .input:focus,form.styleblue select:focus{
+    border-bottom:2px solid rgb(32,96,145);
+}
+
+
+
+
