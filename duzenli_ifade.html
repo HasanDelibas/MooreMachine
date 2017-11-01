@@ -1,0 +1,96 @@
+<head>
+    <meta charset='utf-8'>
+    <title>Düzenli İfadeler</title>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Alfabe</td>
+            <td><input id='alfabe' placeholder='Ör: a,b,c'></td>
+        </tr>
+        <tr>
+            <td>Düzenli ifade</td>
+            <td><input id='ifade' placeholder='Ör: a*b*'></td>
+        </tr>
+        <tr>
+            <td>Kelime Uzunluğu</td>
+            <td><input id='uzunluk' placeholder='Ör: 2' value='5'></td>
+        </tr>
+        <tr>
+            <td>Kelime Sayısı
+            <td><input id='adet' placeholder='tüm kelimeler için -1 giriniz.'></td>
+        </tr>        
+        <tr>
+            <td></td>
+            <td><button onclick='hesapla();' id='buton' >Çıktı Ver</button></td>
+        </tr>    
+    </table>
+    <pre><h2>ÇIKTI</h2></pre>
+    <hr>
+    <pre id='cikti'></pre>
+    <script>
+    	String.prototype.replaceAll = function(from,to){
+            var temp = this;
+            while (temp!=temp.replace(from,to))
+                temp=temp.replace(from,to);
+            return temp;
+        }
+    	
+    </script>
+    
+    <script>
+        var alfabe,ifade,uzunluk,adet;
+        var dizilis = [];
+        var bulunanKelimeSayisi;
+
+        function dizilisOlustur(suanki){
+            if(bulunanKelimeSayisi == adet) return 0;
+            if(suanki!=uzunluk){
+                for(var i = 0;i<alfabe.length;i++){
+                    dizilis.push(alfabe[i]);
+                    dizilisOlustur(suanki+1)
+                    dizilis.pop();
+                }
+            }
+            else{
+                duzenliIfadeKontrol();
+            }
+                
+        }
+        
+        function duzenliIfadeKontrol(){
+            var kelime = dizilis.join('');
+            if(kelime.match(ifade)!=null){
+                document.getElementById('cikti').innerHTML += kelime+"\n";
+                bulunanKelimeSayisi++;
+            }
+                
+        }
+        
+        function hesapla(){
+            alfabe		= document.getElementById('alfabe').value;
+            ifade 		= document.getElementById('ifade').value;
+            uzunluk 	= document.getElementById('uzunluk').value;
+            adet 		= document.getElementById('adet').value;
+
+            uzunluk 	= parseInt(uzunluk);
+            adet 		= parseInt(adet);
+            
+            ifade		= ifade.replaceAll('+','|');
+            ifade		= "^" + ifade + "$";
+            ifade 		= new RegExp(ifade,'i');
+            
+            alfabe 		= alfabe.split(',');
+            
+            document.getElementById('cikti').innerHTML ="";
+            bulunanKelimeSayisi=0;
+            
+            dizilisOlustur(0);
+
+
+
+        }
+
+
+    </script>
+</body>
